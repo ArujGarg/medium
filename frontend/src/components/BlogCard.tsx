@@ -63,3 +63,4 @@ export function Avatar({name, size = 6}: {name: string, size?: number}) {
         <span className="font-medium text-gray-600 dark:text-gray-300">{name[0]}</span>
     </div>
 }
+
