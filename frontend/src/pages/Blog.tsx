@@ -1,4 +1,5 @@
 import { Appbar } from "../components/Appbar";
+import { BlogSkeleton } from "../components/BlogSkeleton";
 import { FullBlog } from "../components/FullBlog";
 import { useBlog } from "../hooks"
 import { useParams } from "react-router-dom";
@@ -11,12 +12,15 @@ export const Blog = () => {
     
     if(loading){
         return <div>
-            loading...
+            <div>
+                <Appbar />
+            </div>
+            <BlogSkeleton />
         </div>
     }
     return <div>
         <Appbar />
-        <FullBlog blog={blog}/>
-
+        {/*the line below ensures that fullblog component is rendered only if blog is defined and is not null. did this because typescript was giving error as blog could be undefined */}
+        {blog && <FullBlog blog={blog}/>} 
     </div>
 }
